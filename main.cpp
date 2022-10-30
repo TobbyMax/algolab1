@@ -91,6 +91,7 @@ bool binaryRowSearch(int** a, int m, int n, int target) {
     return false;
 }
 
+// вспомогательная функция для альтернативной реализации экспоненциального алгоритма (exponentialLadderSearch2)
 int exponentialColumnSearch(int** a, int m, int i, int j,  int target) {
     int delta = 1, previousI = i;
     while (i < m and a[i][j] < target) {
@@ -115,6 +116,7 @@ int exponentialColumnSearch(int** a, int m, int i, int j,  int target) {
     return l;
 }
 
+// реализация экспоненциального поиска лесенкой, которая идет по столбцам экспоненциально, а по строкам линейно
 bool exponentialLadderSearch2(int** a, int m, int n, int target) {
     int i = 0, j = n - 1;
     while (i < m and j >= 0) {
@@ -193,9 +195,9 @@ int main()
     // Меняем M в промежутке 2^k, k принадлежит [0, 13]
     for (int m = 1; m <= n; m *= 2) {
         cout << "Size: " << m << endl;
-        // Генерация данных 1
-        a = generate1(m, n);
-        target = 2 * n + 1;
+        // Генерация данных 1 (аналогично для данных 2)
+        a = generate1(m, n);  // для данных 2: a = generate2(m, n);
+        target = 2 * n + 1;  // для данных 2:  target = 16 * n + 1;
 
         long long sumLin = 0, sumBin = 0, sumExp = 0;
 
